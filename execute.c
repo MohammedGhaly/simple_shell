@@ -1,6 +1,11 @@
 #include "main.h"
 
-void execute(char **command)
+/**
+ * execute - processes the command and executes it
+ * @command: array of strings forming the command
+ * Return: 1 on Success, -1 on Failure
+ */
+int execute(char **command)
 {
 	char *path_to_execute;
 
@@ -8,23 +13,28 @@ void execute(char **command)
 	{
 		if (execve(command[0], command, NULL) == -1)
 		{
-                        write_string(file_name);
-                        exit(98);
-                }
-	}
-	else if ((path_to_execute = get_path(command[0])) != NULL)
-	{
-		command[0] = path_to_execute;
-		if (execve(command[0], command, NULL) == -1)
-		{
 			write_string(file_name);
-			exit(98);
+			return (-1);
 		}
 	}
 	else
 	{
-		write_string(file_name);
-		write_string(": No such file or directory\n");
-		exit(98);
+		path_to_execute = get_path(command[0]);
+		if (path_to_execute != NULL)
+		{
+			command[0] = path_to_execute;
+			if (execve(command[0], command, NULL) == -1)
+			{
+				write_string(file_name);
+				return (-1);
+			}
+		}
+		else
+		{
+			write_string(file_name);
+			write_string(": No such file or directory\n");
+			return (-1);
+		}
 	}
+	return (1);
 }
