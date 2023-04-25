@@ -11,7 +11,7 @@ int execute(char **command)
 
 	if (access(command[0], F_OK) == 0)
 	{
-		if (execve(command[0], command, NULL) == -1)
+		if (execve(command[0], command, environ) == -1)
 		{
 			write_string(file_name);
 			return (-1);
@@ -23,7 +23,7 @@ int execute(char **command)
 		if (path_to_execute != NULL)
 		{
 			command[0] = path_to_execute;
-			if (execve(command[0], command, NULL) == -1)
+			if (execve(command[0], command, environ) == -1)
 			{
 				write_string(file_name);
 				return (-1);

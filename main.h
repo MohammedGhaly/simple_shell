@@ -12,7 +12,7 @@
 #include <dirent.h>
 #include <limits.h>
 
-void free_strings(char **strings);
+void free_strings(char **strings, int n);
 int write_string(char *str);
 void recieve_command(void);
 void prepare_command(char *text);
@@ -29,6 +29,8 @@ int compare_chars(char *s1, char *s2, int chars_compared);
 void ctrlC(int sig);
 void prompt(void);
 int _putchar(char c);
+char *_strcpy(char *dest, char *src);
+int count_words(char *text);
 
 char *file_name;
 extern char **environ;

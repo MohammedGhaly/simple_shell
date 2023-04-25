@@ -19,14 +19,18 @@ void print_strings(char **strings)
 /**
  * free_strings - frees a list of strings
  * @strings: the list of strings
+ * @n: number of elements to be freed
  * Return: success
  */
-void free_strings(char **strings)
+void free_strings(char **strings, int n)
 {
 	int i = 0;
 
-	while (!strings[i])
-	free(strings[i]);
+	while (i < n)
+	{
+		free(strings[i]);
+		i++;
+	}
 }
 
 /**
