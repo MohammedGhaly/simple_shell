@@ -23,6 +23,11 @@
 - How to suspend the execution of a process until one of its children terminates
 - What is EOF / “end-of-file”?
 
+## Description ##
+
+Our shell is a simple UNIX command language interpreter that reads commands from either a file or standard input and executes them.
+
+
 
 ## General Requirement for project
 
@@ -91,3 +96,12 @@ write (man 2 write)
 - recieve_command.c
 - simpleShell.c
 - string_functions.c
+
+### What we learned:
+* How a shell works and finds commands
+* Creating, forking and working with processes
+* Executing a program from another program
+* Handling dynamic memory allocation in a large program
+* Pair programming and team work
+* Building a test suite to check our own code
+
