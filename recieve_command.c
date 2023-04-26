@@ -6,7 +6,7 @@
  */
 void recieve_command(void)
 {
-	char *text = NULL, *text_copy = NULL;
+	char *text = NULL;
 	size_t buffer_size = 0;
 	int lenbuf, child_pid, status;
 
@@ -27,23 +27,17 @@ void recieve_command(void)
 		free(text);
 		return;
 	}
-	text_copy = malloc(_strlen(text) + 1);
-	_strcpy(text_copy, text);
-	if (!command_exists(text))
-	{
-		free(text);
-		write_exist_error();
-		return;
-	}
-	child_pid = fork();
-	if (child_pid < 0)
-		perror("Error");
-	else if (child_pid == 0)
-		prepare_command(text_copy);
 	else
 	{
-		wait(&status);
-		free(text_copy);
+		child_pid = fork();
+		if (child_pid < 0)
+			perror("Error");
+		else if (child_pid == 0)
+			prepare_command(text);
+		else
+	{
+			wait(&status);
 		free(text);
+	}
 	}
 }

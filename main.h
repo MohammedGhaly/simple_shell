@@ -12,7 +12,6 @@
 #include <dirent.h>
 #include <limits.h>
 
-int command_exists(char *text);
 void free_strings(char **strings, int n);
 int write_string(char *str);
 void recieve_command(void);
@@ -32,7 +31,6 @@ void prompt(void);
 int _putchar(char c);
 char *_strcpy(char *dest, char *src);
 int count_words(char *text);
-void write_exist_error(void);
 
 char *file_name;
 extern char **environ;
