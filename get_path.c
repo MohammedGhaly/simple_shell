@@ -46,7 +46,6 @@ char **get_path_commands(char *command)
 		i++;
 	}
 	paths[i] = NULL;
-
 	free(path_value);
 	return (paths);
 }

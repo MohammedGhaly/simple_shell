@@ -25,6 +25,7 @@ void prepare_command(char *text)
 		word = strtok(NULL, delim);
 		i++;
 	}
+	command[i] = NULL;
 	execute_res = execute(command);
 	free_strings(command, command_words);
 	free(command);

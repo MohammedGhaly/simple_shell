@@ -16,6 +16,11 @@ void recieve_command(void)
 		free(text);
 		exit(98);
 	}
+	if (_strlen(text) == 1)
+	{
+		free(text);
+		return;
+	}
 	if (compare_chars(text, "exit\n", 6))
 	{
 		free(text);
@@ -35,9 +40,9 @@ void recieve_command(void)
 		else if (child_pid == 0)
 			prepare_command(text);
 		else
-	{
+		{
 			wait(&status);
-		free(text);
-	}
+			free(text);
+		}
 	}
 }
